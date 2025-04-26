@@ -118,6 +118,7 @@ const Sidebar = ({
                     <a
                       key={i}
                       href={item.link}
+                      className="nav-tile flex"
                       rel="noopener noreferrer"
                       style={{
                         background: tileColor,
