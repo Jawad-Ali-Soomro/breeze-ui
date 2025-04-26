@@ -22,8 +22,8 @@
   }
   
   .input-wrapper:focus-within {
-    border-color: #3b82f6;
-    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+    border-color: #80808090;
+    box-shadow: 0 0 0 2px #80808054;
   }
   
   .base-input {

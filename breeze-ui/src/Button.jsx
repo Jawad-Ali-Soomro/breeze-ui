@@ -21,7 +21,7 @@ const Button = ({
 
   const variantStyles = {
     primary: {
-      backgroundColor: "#3b82f6",
+      backgroundColor: "black",
       color: "white",
       border: "none",
     },
@@ -32,8 +32,8 @@ const Button = ({
     },
     outline: {
       backgroundColor: "transparent",
-      color: "#374151",
-      border: "1px solid #d1d5db",
+      color: "black",
+      border: "1px solid",
     },
     ghost: {
       backgroundColor: "transparent",
@@ -65,7 +65,7 @@ const Button = ({
     ...variantStyles[variant],
     ...(bgColor && { backgroundColor: bgColor }),
     ...(textColor && { color: textColor }),
-    height: "45px",
+    height: size == 'lg' ? "50px" : "45px",
   };
 
   return (
