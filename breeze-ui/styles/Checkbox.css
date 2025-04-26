@@ -1,0 +1,94 @@
+.checkbox-container {
+    display: inline-block;
+    position: relative;
+    margin: 8px 0;
+    user-select: none;
+  }
+  
+  .checkbox-input {
+    position: absolute;
+    opacity: 0;
+    height: 0;
+    width: 0;
+  }
+  .checkbox-custom {
+    position: relative;
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    background-color: #fff;
+    border: 2px solid #64748b;
+    border-radius: 4px;
+    vertical-align: middle;
+    transition: all 0.2s;
+  }
+  .checkbox-custom:after {
+    content: "";
+    position: absolute;
+    display: none;
+    left: 5px;
+    top: 1px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+  }
+  
+  .checkbox-input:indeterminate ~ .checkbox-label .checkbox-custom {
+    background-color: #3b82f6;
+    border-color: #3b82f6;
+  }
+  
+  .checkbox-input:indeterminate ~ .checkbox-label .checkbox-custom:after {
+    display: block;
+    left: 3px;
+    top: 6px;
+    width: 10px;
+    height: 2px;
+    transform: none;
+    border-width: 0 0 2px 0;
+  }
+  .checkbox-input:checked ~ .checkbox-label .checkbox-custom {
+    background-color: #3b82f6;
+    border-color: #3b82f6;
+  }
+  
+  .checkbox-input:checked ~ .checkbox-label .checkbox-custom:after {
+    display: block;
+  }
+  
+  .checkbox-input:not(:disabled):hover ~ .checkbox-label .checkbox-custom {
+    border-color: #3b82f6;
+  }
+  
+  .checkbox-input:focus ~ .checkbox-label .checkbox-custom {
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+  }
+  
+  .checkbox-input:disabled ~ .checkbox-label .checkbox-custom {
+    background-color: #e2e8f0;
+    border-color: #cbd5e0;
+    cursor: not-allowed;
+  }
+  
+  .checkbox-input:disabled:checked ~ .checkbox-label .checkbox-custom {
+    background-color: #cbd5e0;
+    border-color: #cbd5e0;
+  }
+  
+  .checkbox-input:disabled:indeterminate ~ .checkbox-label .checkbox-custom {
+    background-color: #cbd5e0;
+    border-color: #cbd5e0;
+  }
+  
+  .checkbox-text {
+    margin-left: 8px;
+    vertical-align: middle;
+    color: #334155;
+  }
+  
+  .checkbox-input:disabled ~ .checkbox-label .checkbox-text {
+    color: #94a3b8;
+  }
+  

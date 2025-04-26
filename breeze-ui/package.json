@@ -1,0 +1,40 @@
+{
+  "name": "breeze-ui",
+  "version": "1.0.0",
+  "description": "A lightweight, customizable UI component library built with React",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint .",
+    "format": "prettier --write ."
+  },
+  "keywords": [
+    "react",
+    "ui",
+    "components",
+    "javascript",
+    "frontend"
+  ],
+  "author": "Jawad Ali <jawadal829@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Jawad-Ali-Soomro/breeze-ui.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Jawad-Ali-Soomro/breeze-ui/issues"
+  },
+  "homepage": "https://github.com/Jawad-Ali-Soomro/breeze-ui#readme",
+  "peerDependencies": {
+    "react": ">=16.8.0",
+    "react-dom": ">=16.8.0"
+  },
+  "dependencies": {
+    "react-icons": "^4.7.1"
+  },
+  "devDependencies": {
+    "eslint": "^8.56.0",
+    "eslint-plugin-react": "^7.33.2",
+    "prettier": "^3.2.4",
+    "prop-types": "^15.8.1"
+  }
+}
