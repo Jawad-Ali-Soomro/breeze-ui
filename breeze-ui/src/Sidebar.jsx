@@ -89,7 +89,6 @@ const Sidebar = ({
                                 key={idx}
                                 href={sub.link}
                                 className="sub-link flex"
-                                target="_blank"
                                 rel="noopener noreferrer"
                                 style={{
                                   background: tileColor,
