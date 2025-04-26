@@ -52,9 +52,10 @@ const Button = ({
     fontWeight: 500,
     cursor: disabled ? "not-allowed" : "pointer",
     opacity: disabled ? 0.7 : 1,
-    display: "inline-flex",
+    display: "flex",
     alignItems: "center",
     justifyContent: "center",
+    gap: '20px',
     gap: "0.5rem",
     transition: "all 0.2s ease",
   };
