@@ -41,5 +41,5 @@ export default {
     }),
     terser(),
   ],
-  external: ['react', 'react-dom']  // Explicitly externalize React
+  external: ['react', 'react-dom', 'prop-types']  
 };

@@ -1,9 +1,8 @@
+import PropTypes from 'prop-types';
+
 import React, { useState, useEffect } from "react";
-import {
-  LiaAngleDownSolid,
-  LiaAngleUpSolid,
-  LiaArrowRightSolid,
-} from "react-icons/lia";
+import { LiaAngleDownSolid, LiaAngleUpSolid, LiaArrowRightSolid } from "react-icons/lia";
+
 
 const Sidebar = ({
   items = [],
@@ -260,6 +259,31 @@ const Sidebar = ({
       )}
     </>
   );
+};
+
+Sidebar.prototype = {
+  items: PropTypes.arrayOf(
+    PropTypes.shape({
+      icon: PropTypes.elementType,
+      text: PropTypes.string.isRequired,
+      subLinks: PropTypes.arrayOf(
+        PropTypes.shape({
+          icon: PropTypes.elementType,
+          text: PropTypes.string.isRequired,
+          link: PropTypes.string.isRequired
+        })
+      ),
+      link: PropTypes.string
+    })
+  ).isRequired,
+  isOpen: PropTypes.bool.isRequired,
+  bgColor: PropTypes.string,
+  textColor: PropTypes.string,
+  logo: PropTypes.string,
+  tileColor: PropTypes.string,
+  showLogout: PropTypes.bool,
+  logoutFn: PropTypes.func,
+  radius: PropTypes.string
 };
 
 export default Sidebar;
