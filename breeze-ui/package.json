@@ -1,6 +1,6 @@
 {
   "name": "react-breeze-ui",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "A lightweight, customizable UI component library built with React",
   "main": "index.js",
   "scripts": {
