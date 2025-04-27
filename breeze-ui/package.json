@@ -1,6 +1,6 @@
 {
   "name": "react-breeze-ui",
-  "version": "1.0.9",
+  "version": "1.1.0",
   "description": "A lightweight, customizable UI component library built with React",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
