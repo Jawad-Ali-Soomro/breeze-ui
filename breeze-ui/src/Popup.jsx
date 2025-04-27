@@ -1,5 +1,14 @@
 import React from "react";
 
+/**
+ * A full-screen popup component with customizable styling
+ * @param {Object} props
+ * @param {Function} props.onClose - Callback function when popup is closed (by clicking outside)
+ * @param {string} [props.padding="30px"] - Padding for the popup content
+ * @param {string} [props.background="#111111"] - Background color of the popup content
+ * @param {string} [props.color="#333333"] - Text color of the popup content
+ * @param {React.ReactNode} props.children - Content to be displayed inside the popup
+ */
 const Popup = ({
   onClose,
   padding = "30px",

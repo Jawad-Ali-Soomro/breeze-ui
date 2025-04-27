@@ -1,5 +1,20 @@
 import React, { useRef, useEffect } from "react";
 
+/**
+ * A customizable checkbox component that supports indeterminate, checked, and disabled states.
+ * 
+ * @param {Object} props - The properties for the Checkbox component.
+ * @param {string} props.id - The unique identifier for the checkbox.
+ * @param {string} props.label - The label text for the checkbox.
+ * @param {boolean} [props.checked=false] - Indicates whether the checkbox is checked.
+ * @param {function} [props.onChange] - A callback function triggered when the checkbox state changes.
+ * @param {boolean} [props.disabled=false] - Indicates whether the checkbox is disabled.
+ * @param {boolean} [props.indeterminate=false] - Sets the checkbox to an indeterminate state.
+ * @param {string} [props.className=""] - Custom CSS class to be applied to the checkbox container.
+ * @param {Object} [props.style] - Additional inline styles.
+ * 
+ * @returns {JSX.Element} The rendered Checkbox component.
+ */
 const Checkbox = ({
   id,
   label,
@@ -12,19 +27,21 @@ const Checkbox = ({
 }) => {
   const checkboxRef = useRef(null);
 
+  // Set the checkbox to indeterminate state when the component mounts or indeterminate changes
   useEffect(() => {
     if (checkboxRef.current) {
       checkboxRef.current.indeterminate = indeterminate;
     }
   }, [indeterminate]);
 
+  // Handle the checkbox state change
   const handleChange = (e) => {
     if (onChange) {
       onChange(e.target.checked);
     }
   };
 
-  // Styles object
+  // Styles object for custom checkbox styles
   const styles = {
     container: {
       display: 'inline-block',
@@ -101,7 +118,6 @@ const Checkbox = ({
     }
   };
 
-  // State for focus styling
   const [isFocused, setIsFocused] = React.useState(false);
 
   return (

@@ -1,6 +1,20 @@
 import React from 'react';
 import { FaUserAlt } from 'react-icons/fa';
 
+/**
+ * A customizable Avatar component that can display an image or icon with customizable size, shape, and status indicator.
+ * 
+ * @param {Object} props - The properties for the Avatar component.
+ * @param {string} [props.src] - The source URL for the avatar image. If not provided, a default icon is shown.
+ * @param {string} [props.alt="User Avatar"] - The alt text for the avatar image.
+ * @param {string} [props.size="md"] - The size of the avatar ("xs", "sm", "md", "lg", "xl").
+ * @param {string} [props.shape="circle"] - The shape of the avatar ("circle", "square", "rounded").
+ * @param {React.ReactNode} [props.icon=<FaUserAlt />] - The icon to display when no image is provided.
+ * @param {("online"|"offline"|"busy"|"away"|null)} [props.status=null] - The status of the user, used to display a small colored dot.
+ * @param {string} [props.className=""] - Custom CSS class to be applied to the avatar container.
+ * 
+ * @returns {JSX.Element} The rendered Avatar component.
+ */
 const Avatar = ({
   src,
   alt = "User Avatar",

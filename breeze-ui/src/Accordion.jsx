@@ -1,9 +1,24 @@
 import React, { useState } from "react";
 import { FiChevronDown, FiChevronUp } from "react-icons/fi";
 
+/**
+ * Accordion component that allows expanding and collapsing of content sections.
+ * It supports both single and multiple open sections.
+ *
+ * @param {Object} props - The properties for the Accordion component.
+ * @param {Array} props.items - An array of items, where each item contains a `title` and `content`.
+ * @param {boolean} [props.multiple=false] - If true, allows multiple sections to be open at the same time. Default is false (only one section can be open at a time).
+ * 
+ * @returns {JSX.Element} The rendered Accordion component.
+ */
 const Accordion = ({ items, multiple = false }) => {
   const [activeIndexes, setActiveIndexes] = useState([]);
 
+  /**
+   * Toggles the visibility of an accordion item.
+   * 
+   * @param {number} index - The index of the item to toggle.
+   */
   const toggleItem = (index) => {
     if (multiple) {
       setActiveIndexes((prev) =>

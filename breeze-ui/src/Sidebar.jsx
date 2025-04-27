@@ -1,8 +1,28 @@
-import PropTypes from 'prop-types';
-
 import React, { useState, useEffect } from "react";
+import PropTypes from "prop-types";
 import { LiaAngleDownSolid, LiaAngleUpSolid, LiaArrowRightSolid } from "react-icons/lia";
-
+/**
+ * A customizable sidebar component with support for nested menus
+ * @param {Object} props
+ * @param {Array<{
+*   icon: React.ElementType,
+*   text: string,
+*   subLinks?: Array<{
+*     icon: React.ElementType,
+*     text: string,
+*     link: string
+*   }>,
+*   link?: string
+* }>} props.items - The navigation items to display
+* @param {boolean} props.isOpen - Controls whether the sidebar is visible
+* @param {string} [props.bgColor="#111"] - Background color of the sidebar
+* @param {string} [props.textColor="#fff"] - Text color
+* @param {string} [props.logo] - URL for the logo image
+* @param {string} [props.tileColor="orange"] - Color for the navigation tiles
+* @param {boolean} [props.showLogout] - Whether to show the logout button
+* @param {Function} [props.logoutFn] - Function to call when logout is clicked
+* @param {string} [props.radius="10px"] - Border radius for elements
+*/
 
 const Sidebar = ({
   items = [],
@@ -261,21 +281,23 @@ const Sidebar = ({
   );
 };
 
-Sidebar.prototype = {
+
+
+Sidebar.propTypes = {
   items: PropTypes.arrayOf(
     PropTypes.shape({
-      icon: PropTypes.elementType,
+      icon: PropTypes.elementType.isRequired,
       text: PropTypes.string.isRequired,
       subLinks: PropTypes.arrayOf(
         PropTypes.shape({
           icon: PropTypes.elementType,
           text: PropTypes.string.isRequired,
-          link: PropTypes.string.isRequired
+          link: PropTypes.string.isRequired,
         })
       ),
-      link: PropTypes.string
+      link: PropTypes.string,
     })
-  ).isRequired,
+  ),
   isOpen: PropTypes.bool.isRequired,
   bgColor: PropTypes.string,
   textColor: PropTypes.string,
@@ -283,7 +305,9 @@ Sidebar.prototype = {
   tileColor: PropTypes.string,
   showLogout: PropTypes.bool,
   logoutFn: PropTypes.func,
-  radius: PropTypes.string
+  radius: PropTypes.string,
 };
+
+
 
 export default Sidebar;

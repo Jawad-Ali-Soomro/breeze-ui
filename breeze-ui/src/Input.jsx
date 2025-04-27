@@ -1,5 +1,19 @@
 import React from 'react';
 
+/**
+ * A customizable input component with support for icons, error states, and more
+ * @param {Object} props
+ * @param {string} [props.type="text"] - Input type (text, password, email, etc.)
+ * @param {string} [props.placeholder=""] - Placeholder text
+ * @param {string} [props.value=""] - Current input value
+ * @param {React.ChangeEventHandler<HTMLInputElement>} [props.onChange=() => {}] - Change handler
+ * @param {boolean} [props.disabled=false] - Whether the input is disabled
+ * @param {boolean|string} [props.error=false] - Error state (true/false) or error message string
+ * @param {React.ReactNode} [props.iconLeft=null] - Left icon component
+ * @param {React.ReactNode} [props.iconRight=null] - Right icon component
+ * @param {string} [props.className=""] - Additional CSS class names
+ * @param {Object} [props.rest] - Additional input attributes
+ */
 const Input = ({
   type = "text",
   placeholder = "",

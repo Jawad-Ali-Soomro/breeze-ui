@@ -1,5 +1,13 @@
 import React from 'react';
 
+/**
+ * A customizable loading indicator component with multiple variants
+ * @param {Object} props
+ * @param {'spinner'|'dots'|'bar'|'progress'} [props.variant='spinner'] - Type of loader to display
+ * @param {'small'|'medium'|'large'|'xlarge'} [props.size='medium'] - Size of the loader
+ * @param {string} [props.color='#3b82f6'] - Color of the loader in hex format
+ * @param {'slow'|'normal'|'fast'} [props.speed='normal'] - Animation speed
+ */
 const Loader = ({
   variant = 'spinner',
   size = 'medium',
@@ -57,7 +65,11 @@ const Loader = ({
     }
   };
 
-  // Helper function to convert hex to rgb
+  /**
+   * Converts hex color to RGB format
+   * @param {string} hex - Color in hex format (e.g. '#3b82f6')
+   * @returns {string} RGB color string (e.g. '59, 130, 246')
+   */
   function hexToRgb(hex) {
     const r = parseInt(hex.slice(1, 3), 16);
     const g = parseInt(hex.slice(3, 5), 16);
@@ -85,7 +97,10 @@ const Loader = ({
     }
   `;
 
-  // Render different variants
+  /**
+   * Renders the appropriate loader variant based on props
+   * @returns {React.ReactNode} The loader component
+   */
   const renderVariant = () => {
     switch (variant) {
       case 'spinner':
@@ -152,7 +167,5 @@ const Loader = ({
     </div>
   );
 };
-
-
 
 export default Loader;
