@@ -1,26 +1,36 @@
 import React from "react";
-import "../styles/Popup.css";
 
 const Popup = ({
   onClose,
   padding = "30px",
-  background = "white",
-  color,
+  background = "#111111", // Dark background as shown in your screenshot
+  color = "#333333", // Text color from your screenshot
   children,
 }) => {
   return (
-    <div className="fullscreen-popup-container">
-      <div 
-        className="popup-overlay" 
-        onClick={onClose}
-      />
-      
+    <div
+      className="fullscreen-popup"
+      style={{
+        position: "fixed",
+        top: 0,
+        left: 0,
+        width: "100vw",
+        minHeight:'100vh',
+        height: "100vh",
+        zIndex: 10000,
+        background: "rgba(0,0,0,.3)",
+        display:'flex',
+        justifyContent:'center',
+        alignItems:'center'
+      }}
+      onClick={onClose}
+    >
       <div
-        className="popup-content-wrapper"
+        className="popup-content"
         style={{
-          padding: padding,
-          background: background,
-          color: color,
+          padding,
+          background,
+          color,
         }}
       >
         {children}

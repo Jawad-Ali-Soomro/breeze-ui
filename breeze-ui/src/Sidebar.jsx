@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import '../styles/Sidebar.css'
 import {
   LiaAngleDownSolid,
   LiaAngleUpSolid,
@@ -31,20 +30,141 @@ const Sidebar = ({
     }));
   };
 
+  // Styles object
+  const styles = {
+    sidebar: {
+      width: '100%',
+      height: '100vh',
+      position: 'fixed',
+      top: 0,
+      left: 0,
+      zIndex: 1000000,
+      backgroundColor: 'rgba(0, 0, 0, 0.1)'
+    },
+    animatedSide: {
+      width: '350px',
+      height: '100vh',
+      position: 'absolute',
+      animation: 'animateSidebar 0.5s linear',
+      display: 'flex',
+      justifyContent: 'start',
+      alignItems: 'center',
+      gap: '20px',
+      flexDirection: 'column',
+      backgroundColor: bgColor,
+      color: textColor
+    },
+    logo: {
+      width: '200px',
+      marginTop: '20px'
+    },
+    navigation: {
+      gap: '10px',
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      width: '100%',
+      backgroundColor: 'inherit',
+      flexDirection: 'column'
+    },
+    navTile: {
+      width: '280px',
+      display: 'flex',
+      justifyContent: 'start',
+      alignItems: 'start',
+      color: 'inherit',
+      textDecoration: 'none',
+      flexDirection: 'column'
+    },
+    leftMain: {
+      display: 'flex',
+      justifyContent: 'space-between',
+      padding: '15px 10px',
+      width: 'calc(100% - 20px)',
+      alignItems: 'center',
+      background: tileColor,
+      borderRadius: radius,
+      cursor: 'pointer'
+    },
+    leftWrap: {
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      gap: '10px'
+    },
+    icon: {
+      display: 'flex',
+      fontSize: '1rem',
+      justifyContent: 'center',
+      alignItems: 'center'
+    },
+    subMenu: {
+      width: '100%',
+      gap: '5px',
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      flexDirection: 'column',
+      marginTop: '5px'
+    },
+    subLink: {
+      width: 'calc(80% - 20px)',
+      height: '45px',
+      padding: '0 10px',
+      display: 'flex',
+      justifyContent: 'start',
+      alignItems: 'center',
+      marginLeft: '20%',
+      textDecoration: 'none',
+      color: 'inherit',
+      gap: '10px',
+      background: tileColor,
+      borderRadius: radius
+    },
+    logoutBtn: {
+      width: '320px',
+      height: '55px',
+      fontSize: '1rem',
+      textTransform: 'uppercase',
+      background: 'red',
+      border: 'none',
+      color: 'white',
+      fontWeight: 600,
+      position: 'absolute',
+      bottom: '20px',
+      cursor: 'pointer',
+      borderRadius: radius
+    },
+    subIcon: {
+      fontSize: '1.2rem',
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center'
+    }
+  };
+
+  // Animation styles
+  const animationStyles = `
+    @keyframes animateSidebar {
+      from { transform: translateX(-100%); }
+      to { transform: translateX(0); }
+    }
+  `;
+
   return (
     <>
+      <style>{animationStyles}</style>
       {open && (
         <div
           onClick={() => setIsOpen(false)}
-          className={`sidebar ${open ? "open" : "closed"}`}
+          style={styles.sidebar}
         >
           <div
-            className="animated-side"
+            style={styles.animatedSide}
             onClick={(e) => e.stopPropagation()}
-            style={{ backgroundColor: bgColor, color: textColor }}
           >
-            {logo && <img className="logo" src={logo} alt="Logo" />}
-            <div className="navigation">
+            {logo && <img style={styles.logo} src={logo} alt="Logo" />}
+            <div style={styles.navigation}>
               {items?.map((item, i) => {
                 const ItemIcon = item?.icon;
                 const hasSubLinks = item?.subLinks?.length > 0;
@@ -52,26 +172,18 @@ const Sidebar = ({
 
                 if (hasSubLinks) {
                   return (
-                    <div key={i} className="nav-tile submenu-tile">
+                    <div key={i} style={styles.navTile}>
                       <div
-                        className="left-main flex"
-                        style={{
-                          background: tileColor,
-                          cursor: "pointer",
-                          borderRadius: radius,
-                        }}
+                        style={styles.leftMain}
                         onClick={() => toggleSubMenu(i)}
                       >
-                        <div className="left-wrap">
-                          <div
-                            className="icon flex"
-                            style={{ borderRadius: radius }}
-                          >
+                        <div style={styles.leftWrap}>
+                          <div style={styles.icon}>
                             {ItemIcon && <ItemIcon />}
                           </div>
                           <p>{item?.text}</p>
                         </div>
-                        <div className="icon">
+                        <div style={styles.icon}>
                           {openSubmenus[i] ? (
                             <LiaAngleUpSolid />
                           ) : (
@@ -81,25 +193,18 @@ const Sidebar = ({
                       </div>
 
                       {openSubmenus[i] && (
-                        <div className="sub-menu">
+                        <div style={styles.subMenu}>
                           {item.subLinks.map((sub, idx) => {
                             const SubIcon = sub?.icon;
                             return (
                               <a
                                 key={idx}
                                 href={sub.link}
-                                className="sub-link flex"
+                                style={styles.subLink}
                                 rel="noopener noreferrer"
-                                style={{
-                                  background: tileColor,
-                                  borderRadius: radius,
-                                }}
                               >
                                 {SubIcon && (
-                                  <div
-                                    className="icon flex"
-                                    style={{ borderRadius: radius }}
-                                  >
+                                  <div style={styles.icon}>
                                     <SubIcon />
                                   </div>
                                 )}
@@ -118,24 +223,21 @@ const Sidebar = ({
                     <a
                       key={i}
                       href={item.link}
-                      className="nav-tile flex"
-                      rel="noopener noreferrer"
                       style={{
+                        ...styles.navTile,
                         background: tileColor,
-                        borderRadius: radius,
+                        borderRadius: radius
                       }}
+                      rel="noopener noreferrer"
                     >
-                      <div className="left-main">
-                        <div className="left-wrap">
-                          <div
-                            className="icon flex"
-                            style={{ borderRadius: radius }}
-                          >
+                      <div style={styles.leftMain}>
+                        <div style={styles.leftWrap}>
+                          <div style={styles.icon}>
                             {ItemIcon && <ItemIcon />}
                           </div>
                           <p>{item?.text}</p>
                         </div>
-                        <div className="icon">
+                        <div style={styles.icon}>
                           <LiaArrowRightSolid />
                         </div>
                       </div>
@@ -147,8 +249,7 @@ const Sidebar = ({
 
             {showLogout && (
               <button
-                className="logout-btn flex"
-                style={{ borderRadius: radius }}
+                style={styles.logoutBtn}
                 onClick={logoutFn}
               >
                 Logout
