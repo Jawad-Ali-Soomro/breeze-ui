@@ -9,10 +9,14 @@ const Popup = ({
   children,
 }) => {
   return (
-    <div onClick={() => onClose()} className="main-popup-container">
+    <div className="fullscreen-popup-container">
+      <div 
+        className="popup-overlay" 
+        onClick={onClose}
+      />
+      
       <div
-        className="main-popup-wrapper"
-        onClick={(e) => e.stopPropagation()}
+        className="popup-content-wrapper"
         style={{
           padding: padding,
           background: background,

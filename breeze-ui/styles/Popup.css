@@ -1,12 +1,28 @@
-.main-popup-container {
-    width: 100vw;
-    height: 100vh;
-    background: rgba(0, 0, 0, 0.3);
+.fullscreen-popup-container {
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 10000000000000;
+    right: 0;
+    bottom: 0;
+    z-index: 10000;
     display: flex;
-    justify-content: center;
-    align-items: center;
-}
+  }
+  
+  .popup-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+  }
+  
+  .popup-content-wrapper {
+    position: relative;
+    z-index: 10001;
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+  }
