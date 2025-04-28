@@ -1,23 +1,7 @@
 import React from "react";
+import PropTypes from "prop-types";
 
-/**
- * A customizable button component supporting different variants, sizes, and loading states.
- * 
- * @param {Object} props - The properties for the Button component.
- * @param {string} [props.variant="primary"] - The variant of the button (e.g., "primary", "secondary", "outline", "ghost", "danger").
- * @param {string} [props.size="md"] - The size of the button ("sm", "md", "lg").
- * @param {string} [props.bgColor] - Custom background color for the button.
- * @param {string} [props.textColor] - Custom text color for the button.
- * @param {React.ReactNode} [props.icon] - Icon to be displayed inside the button.
- * @param {React.ReactNode} props.children - The content inside the button (usually text).
- * @param {function} [props.onClick] - Callback function to be triggered when the button is clicked.
- * @param {boolean} [props.disabled=false] - Indicates whether the button is disabled.
- * @param {boolean} [props.isLoading=false] - Indicates whether the button is in a loading state.
- * @param {string} [props.className=""] - Custom CSS class to be applied to the button.
- * @param {string} [props.radius] - Custom border radius for the button.
- * 
- * @returns {JSX.Element} The rendered Button component.
- */
+
 const Button = ({
   variant = "primary",
   size = "md",
@@ -109,5 +93,22 @@ const Button = ({
     </button>
   );
 };
+
+
+
+Button.propTypes = {
+  variant: PropTypes.oneOf(["primary", "secondary", "outline", "ghost", "danger"]),
+  size: PropTypes.oneOf(["sm", "md", "lg"]),
+  bgColor: PropTypes.string,
+  textColor: PropTypes.string,
+  icon: PropTypes.node,
+  children: PropTypes.node.isRequired,
+  onClick: PropTypes.func,
+  disabled: PropTypes.bool,
+  isLoading: PropTypes.bool,
+  className: PropTypes.string,
+  radius: PropTypes.string,
+};
+
 
 export default Button;

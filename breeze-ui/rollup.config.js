@@ -1,45 +1,29 @@
-import resolve from 'rollup-plugin-node-resolve';
-import babel from 'rollup-plugin-babel';
-import postcss from 'rollup-plugin-postcss';
+import babel from '@rollup/plugin-babel';
+import resolve from '@rollup/plugin-node-resolve';
+import commonjs from '@rollup/plugin-commonjs';
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
-import { terser } from 'rollup-plugin-terser';
-import autoprefixer from 'autoprefixer';
+import terser from '@rollup/plugin-terser';
 
 export default {
-  input: 'index.js',  // Changed to src/index.js for better structure
+  input: 'src/index.js', // your entry point
   output: [
     {
-      file: 'dist/index.js',
-      format: 'cjs',
-      exports: 'named',
-      sourcemap: true  // Add sourcemaps for debugging
+      file: 'dist/index.esm.js',
+      format: 'esm', // for modern bundlers
+      sourcemap: false,
     },
     {
-      file: 'dist/index.esm.js',
-      format: 'esm',
-      sourcemap: true
+      file: 'dist/index.cjs.js',
+      format: 'cjs', // for Node.js
+      sourcemap: false,
     },
   ],
   plugins: [
     peerDepsExternal(),
-    resolve({
-      extensions: ['.js', '.jsx']  // Add JSX support
-    }),
-    babel({ 
-      exclude: 'node_modules/**',
-      presets: ['@babel/preset-react']  // Ensure React JSX is transformed
-    }),
-    postcss({
-      modules: false,
-      extract: true,
-      minimize: true,
-      include: '**/*.css',
-      plugins: [autoprefixer()],  // Add vendor prefixes
-      config: {
-        path: './postcss.config.js'  // Optional PostCSS config file
-      }
-    }),
-    terser(),
+    resolve(),
+    commonjs(),
+    babel({ babelHelpers: 'bundled', presets: ['@babel/preset-react'] }),
+    terser()
   ],
-  external: ['react', 'react-dom', 'prop-types']
+  external: ['react', 'react-dom'],
 };

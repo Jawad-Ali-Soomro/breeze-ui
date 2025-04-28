@@ -1,14 +1,6 @@
 import React from "react";
+import PropTypes from "prop-types";
 
-/**
- * A full-screen popup component with customizable styling
- * @param {Object} props
- * @param {Function} props.onClose - Callback function when popup is closed (by clicking outside)
- * @param {string} [props.padding="30px"] - Padding for the popup content
- * @param {string} [props.background="#111111"] - Background color of the popup content
- * @param {string} [props.color="#333333"] - Text color of the popup content
- * @param {React.ReactNode} props.children - Content to be displayed inside the popup
- */
 const Popup = ({
   onClose,
   padding = "30px",
@@ -16,7 +8,6 @@ const Popup = ({
   color = "#333333",
   children,
 }) => {
-  // Safe handler for content clicks
   const handleContentClick = (e) => {
     e.stopPropagation();
   };
@@ -52,6 +43,14 @@ const Popup = ({
       </div>
     </div>
   );
+};
+
+Popup.propTypes = {
+  onClose: PropTypes.func.isRequired,
+  padding: PropTypes.string,
+  background: PropTypes.string,
+  color: PropTypes.string,
+  children: PropTypes.node.isRequired,
 };
 
 export default Popup;

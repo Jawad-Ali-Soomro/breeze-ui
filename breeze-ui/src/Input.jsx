@@ -1,18 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 
 /**
  * A customizable input component with support for icons, error states, and more
  * @param {Object} props
- * @param {string} [props.type="text"] - Input type (text, password, email, etc.)
- * @param {string} [props.placeholder=""] - Placeholder text
- * @param {string} [props.value=""] - Current input value
- * @param {React.ChangeEventHandler<HTMLInputElement>} [props.onChange=() => {}] - Change handler
- * @param {boolean} [props.disabled=false] - Whether the input is disabled
- * @param {boolean|string} [props.error=false] - Error state (true/false) or error message string
- * @param {React.ReactNode} [props.iconLeft=null] - Left icon component
- * @param {React.ReactNode} [props.iconRight=null] - Right icon component
- * @param {string} [props.className=""] - Additional CSS class names
- * @param {Object} [props.rest] - Additional input attributes
  */
 const Input = ({
   type = "text",
@@ -24,9 +15,10 @@ const Input = ({
   iconLeft = null,
   iconRight = null,
   className = "",
-  ...props
+  ...rest
 }) => {
-  // Styles object
+  const [isFocused, setIsFocused] = useState(false);
+
   const styles = {
     container: {
       fontFamily: "'Segoe UI', sans-serif",
@@ -38,29 +30,29 @@ const Input = ({
       position: 'relative',
       display: 'flex',
       alignItems: 'center',
-      border: '1px solid #ddd',
+      border: `1px solid ${error ? '#ef4444' : '#ddd'}`,
       borderRadius: '6px',
       transition: 'all 0.2s',
       width: '300px',
-      ...(error && { borderColor: '#ef4444' }),
-      ...(disabled && { opacity: 0.6, cursor: 'not-allowed' })
-    },
-    wrapperFocus: {
-      borderColor: '#80808090',
-      boxShadow: '0 0 0 2px #80808054'
+      opacity: disabled ? 0.6 : 1,
+      cursor: disabled ? 'not-allowed' : 'text',
+      ...(isFocused && {
+        borderColor: '#80808090',
+        boxShadow: '0 0 0 2px #80808054'
+      })
     },
     input: {
-      width: '100%',
+      flex: 1,
       padding: '8px 12px',
       fontSize: '14px',
       border: 'none',
       outline: 'none',
       background: 'transparent',
-      ...(error && { color: '#ef4444' }),
-      ...(iconLeft && { paddingLeft: '4px' })
+      color: error ? '#ef4444' : 'inherit'
     },
     icon: {
       display: 'flex',
+      alignItems: 'center',
       padding: '0 8px',
       color: '#777'
     },
@@ -71,17 +63,9 @@ const Input = ({
     }
   };
 
-  // Handle focus state
-  const [isFocused, setIsFocused] = React.useState(false);
-
   return (
     <div style={styles.container}>
-      <div 
-        style={{
-          ...styles.wrapper,
-          ...(isFocused && styles.wrapperFocus)
-        }}
-      >
+      <div style={styles.wrapper}>
         {iconLeft && <span style={{ ...styles.icon, marginRight: '4px' }}>{iconLeft}</span>}
         <input
           type={type}
@@ -89,11 +73,11 @@ const Input = ({
           value={value}
           onChange={onChange}
           disabled={disabled}
-          style={styles.input}
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
+          style={styles.input}
           className={className}
-          {...props}
+          {...rest}
         />
         {iconRight && <span style={{ ...styles.icon, marginLeft: '4px' }}>{iconRight}</span>}
       </div>
@@ -102,6 +86,21 @@ const Input = ({
       )}
     </div>
   );
+};
+
+Input.propTypes = {
+  type: PropTypes.string,
+  placeholder: PropTypes.string,
+  value: PropTypes.string,
+  onChange: PropTypes.func,
+  disabled: PropTypes.bool,
+  error: PropTypes.oneOfType([
+    PropTypes.bool,
+    PropTypes.string
+  ]),
+  iconLeft: PropTypes.node,
+  iconRight: PropTypes.node,
+  className: PropTypes.string
 };
 
 export default Input;

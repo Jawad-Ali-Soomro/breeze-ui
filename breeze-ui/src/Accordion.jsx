@@ -1,16 +1,7 @@
 import React, { useState } from "react";
 import { FiChevronDown, FiChevronUp } from "react-icons/fi";
+import PropTypes from "prop-types";
 
-/**
- * Accordion component that allows expanding and collapsing of content sections.
- * It supports both single and multiple open sections.
- *
- * @param {Object} props - The properties for the Accordion component.
- * @param {Array} props.items - An array of items, where each item contains a `title` and `content`.
- * @param {boolean} [props.multiple=false] - If true, allows multiple sections to be open at the same time. Default is false (only one section can be open at a time).
- * 
- * @returns {JSX.Element} The rendered Accordion component.
- */
 const Accordion = ({ items, multiple = false }) => {
   const [activeIndexes, setActiveIndexes] = useState([]);
 
@@ -98,5 +89,17 @@ const Accordion = ({ items, multiple = false }) => {
     </div>
   );
 };
+
+
+Accordion.propTypes = {
+  items: PropTypes.arrayOf(
+    PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      content: PropTypes.node.isRequired
+    })
+  ).isRequired,
+  multiple: PropTypes.bool
+};
+
 
 export default Accordion;
