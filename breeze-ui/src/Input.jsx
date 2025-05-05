@@ -30,7 +30,6 @@ const Input = ({
       position: 'relative',
       display: 'flex',
       alignItems: 'center',
-      border: `1px solid ${error ? '#ef4444' : '#ddd'}`,
       borderRadius: '6px',
       transition: 'all 0.2s',
       width: '300px',

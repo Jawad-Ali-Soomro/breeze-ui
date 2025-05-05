@@ -3,6 +3,7 @@ import {
   MouseEventHandler,
   ChangeEventHandler,
   InputHTMLAttributes,
+  JSX,
 } from "react";
 
 // Button Component
@@ -115,3 +116,52 @@ export interface SidebarProps {
 
 export declare const Sidebar: (props: SidebarProps) => JSX.Element;
 export default Sidebar;
+
+export interface CardProps {
+  title?: string;
+  content?: string;
+  icon?: React.ReactNode;
+  footer?: React.ReactNode;
+  image?: string;
+  variant?: "primary" | "secondary" | "accent";
+  shadow?: boolean;
+  rounded?: boolean;
+  style?: React.CSSProperties;
+  className?: string;
+  children?: React.ReactNode;
+}
+
+export declare const Card: (props: CardProps) => JSX.Element;
+export default Card;
+export interface ComboboxOption {
+  value: string | number;
+  label: string;
+}
+
+export interface ComboboxProps {
+  options: ComboboxOption[];
+  placeholder?: string;
+  emptyText?: string;
+  style?: React.CSSProperties;
+  onSelect?: (value: string | number) => void;
+  className?: string;
+  children?: React.ReactNode;
+}
+
+export declare const Combobox: (props: ComboboxProps) => JSX.Element;
+
+export default Combobox;
+
+export interface RangeProps {
+  min?: number;
+  max?: number;
+  value?: number;
+  step?: number;
+  thumbColor?: string;
+  barColor?: string;
+  onChange?: (value: number) => void;
+  className?: string;
+  style?: React.CSSProperties;
+}
+export declare const Range: (props: RangeProps) => JSX.Element;
+export default RangeInput;
