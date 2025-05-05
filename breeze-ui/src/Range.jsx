@@ -35,18 +35,6 @@ const Range = ({
           outline: 'none',
         }}
       />
-      <div style={{
-        position: 'absolute',
-        left: `${((value - min) / (max - min)) * 100}%`,
-        top: '50%',
-        transform: 'translate(-50%, -50%)',
-        width: '18px',
-        height: '18px',
-        borderRadius: '50%',
-        background: thumbColor,
-        cursor: 'pointer',
-        pointerEvents: 'none',
-      }} />
     </div>
   );
 };
