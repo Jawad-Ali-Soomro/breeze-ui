@@ -32,6 +32,7 @@ const Input = ({
       alignItems: 'center',
       borderRadius: '6px',
       transition: 'all 0.2s',
+      border: '1px solid rgb(226, 232, 240)',
       width: '300px',
       opacity: disabled ? 0.6 : 1,
       cursor: disabled ? 'not-allowed' : 'text',
